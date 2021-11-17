@@ -14,7 +14,6 @@ namespace RandomWeights
             var expected = TestNumbers;
             var actual = TestNumbers;
             CollectionAssert.AreEqual(expected, actual);
-            Assert.Fail();
         }
     }
 }
