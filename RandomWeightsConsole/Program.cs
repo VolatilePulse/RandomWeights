@@ -28,7 +28,6 @@ namespace RandomWeights
             var slowestTime = new TimeSpan(0);
             var slowestWeights = Array.Empty<int>();
             var slowestTargetWeight = 0;
-            var mostIterations = 0;
 
             foreach (var i in Enumerable.Range(0, testWeights.Sum()))
             {
@@ -37,8 +36,6 @@ namespace RandomWeights
                 sw.Start();
                 var results = RandomWeightsV2.RandomWeightsUtils.CalculateIndices(i, testWeights);
                 sw.Stop();
-                if (results.Iterations > mostIterations)
-                    mostIterations++;
 
                 if (sw.Elapsed > slowestTime)
                 {
@@ -51,8 +48,6 @@ namespace RandomWeights
             Console.WriteLine(slowestTime);
             Console.WriteLine(string.Join(',', slowestWeights));
             Console.WriteLine(slowestTargetWeight);
-            Console.WriteLine();
-            Console.WriteLine(mostIterations);
         }
     }
 }
