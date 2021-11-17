@@ -14,7 +14,7 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  dotnetSdkVersion: '5.0.0'
+  dotnetSdkVersion: '5.0.12'
   
 steps:
 - task: NuGetToolInstaller@1
