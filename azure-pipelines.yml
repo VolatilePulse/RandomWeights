@@ -14,16 +14,9 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  dotnetSdkVersion: '5.0.12'
   
 steps:
 - task: NuGetToolInstaller@1
-
-- task: UseDotNet@2
-  displayName: 'Use .NET Core SDK $(dotnetSdkVersion)'
-  inputs:
-    packageType: sdk
-    version: $(dotnetSdkVersion)
 
 - task: NuGetCommand@2
   inputs:
@@ -39,3 +32,9 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: test
+    projects: '**/*Tests/*.csproj'
+    arguments: '--configuration $(buildConfiguration)'
